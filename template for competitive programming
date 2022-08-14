@@ -1,0 +1,112 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+using namespace __gnu_pbds;
+
+#define int long long
+#define ff first
+#define ss second
+// #define map unordered_map
+#define pp pair<int, int>
+#define pp1 pair<int, pair<int, int>>
+#define pb push_back
+#define endl "\n"
+#define db double
+
+template <class T>
+using oset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+// write oset<int>  st
+// variant as less_equal greater_equal less greater
+// here adding equal will behave as a multiset
+// *st.find_by_order(k)  returns iterator to kth element starting from 0;
+// st.order_of_key(k) returns count of elements strictly smaller than k;
+// st.insert(k) to insert an elements
+// *st.lower_bound(k) return greater than or equal to
+// st.erase(k) to erase
+// to cal. (1/y)%mod u do  power(y,mod-2)%mod
+
+const int mod = (int)(1e9 + 7);
+const int md = 10000007;
+const int lm = (int)(1e18 + 7);
+
+int power(int a, int x)
+{
+
+    if (x == 0)
+    {
+        return 1;
+    }
+
+    int res = power(a, x / 2);
+
+    if (x % 2)
+    {
+        res = (res * res) % mod;
+        res = (res * a) % mod;
+    }
+    else
+    {
+        res = (res * res) % mod;
+    }
+    return res % mod;
+}
+
+map<int, int> findprimes(int &g)
+{
+    int n = g;
+
+    map<int, int> mpt;
+
+    vector<int> primes(n, 1);
+
+    primes[0] = 0;
+    primes[1] = 0;
+
+    for (int i = 2; i * i < n; i++)
+    {
+        if (primes[i] == 1)
+        {
+            for (int j = i * i; j < n; j += i)
+            {
+                primes[j] = 0;
+            }
+        }
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        if (primes[i] == 1)
+        {
+            mpt[i]++;
+        }
+    }
+
+    return mpt;
+}
+
+bool cmp(pair<int, int> &a, pair<int, int> &b)
+{
+    return a.second > b.second;
+}
+
+////////////////////////////////////////code starts here//////////////////////////
+}
+
+signed main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout << fixed;
+    cout.precision(10);
+    ///////---start it-----////////
+
+    int t = 1, n = 0, k = 0, d = 0, m = 0;
+
+    while (t--)
+    {
+    }
+    return 0;
+}
